@@ -49,4 +49,25 @@ docker build -t amazon-corretto-{major_version} -f ./{major_version}/{jdk|jre|sl
 # Security
 If you would like to report a potential security issue in this project, please do not create a GitHub issue. Instead,
 please follow the instructions [here](https://aws.amazon.com/security/vulnerability-reporting/ ) or email
-AWS security directly.
+AWS security directly at <a href="mailto:aws-security@amazon.com">aws-security@amazon.com</a>
+
+# Why does security scanner show that a docker image has a CVE?
+If a security scanner reports that a Corretto-Docker image includes a CVE, the first recommended action is to seek an updated version of this image.
+Run "apk upgrade" in your Dockerfiles or systems to resolve the issue immediately.  If upgrading does not resolve the issue, please treat this as a
+potential security issue and follow the instructions [here](https://aws.amazon.com/security/vulnerability-reporting/ ) or email
+AWS security directly at <a href="mailto:aws-security@amazon.com">aws-security@amazon.com</a>.
+
+There are multiple reasons why a CVE may appear to be present in a docker image.  In some cases, the warning can be ignored
+but it is best to check with security to be sure.  In case of warnings, it may be that:
+<ul>
+  <li>
+    The CVE has not yet been addressed in the image, and represents a real issue.  This can occur if we have not yet integrated a solution even though
+    the issue has been identified.
+  </li>
+  <li>
+    The listed CVE is a false positive.  Sometimes, security scanners use heuristics that may recognize symptoms associated with a particular CVE without 
+    recognizing the presence of a fix to render the CVE harmless.
+  </li>
+</ul>
+  
+    
